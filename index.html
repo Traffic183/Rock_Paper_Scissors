@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+<div id="game">
+  <p>Press r, p, or s to start playing</p>
+</div>
+
+  <script type="text/javascript">
+
+var options = ["r", "p", "s"];
+var wins = 0;
+var losses = 0;
+var ties = 0;
+
+  document.onkeyup = function() {
+    var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+    
+    console.log(userguess);
+
+    var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+    console.log(computerGuess);
+
+    if (userguess === "r" || userguess === "p" || userguess === "s") {
+      if ((userguess === "r") && (computerGuess === "r")) {
+        ties++;
+      }  
+      if ((userguess === "r") && (computerGuess === "p")) {
+        losses++;
+      }  
+      if ((userguess === "r") && (computerGuess === "s")) {
+        wins++;
+      }  
+      if ((userguess === "p") && (computerGuess === "p")) {
+        ties++;
+      }  
+      if ((userguess === "p") && (computerGuess === "r")) {
+        wins++;
+      }  
+      if ((userguess === "p") && (computerGuess === "s")) {
+        losses++;
+      }  
+      if ((userguess === "s") && (computerGuess === "s")) {
+        ties++;
+      }  
+      if ((userguess === "s") && (computerGuess === "r")) {
+        losses++;
+      }  
+      if ((userguess === "s") && (computerGuess === "p")) {
+        wins++;
+      } 
+    } else {
+      alert("Please choose r, p or s");
+    }  
+
+    var html = "<p>Press r, p, or s to start playing</p>" + 
+    "<p>wins " + wins + "</p>" +
+    "<p>losses " + losses + "</p>" +
+    "<p>ties " + ties + "</p>"; 
+
+    document.querySelector("#game").innerHTML = html;
+
+  }
+
+  
+  //Math.random produce random decimal number between 0 and 1
+  
+  //options.length is length of the array
+  
+
+  </script>
+ <!-- I need user to make choice
+computer to make choice
+capture choices
+compare choices
+determine win, loss, tie
+display result -->
+
+</body>
+</html> 
